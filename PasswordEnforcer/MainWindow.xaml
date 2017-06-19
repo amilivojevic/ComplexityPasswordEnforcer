@@ -4,40 +4,58 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordEnforcer"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Password Complexity Enforcer" Height="350" Width="525">
+        Title="Password Complexity Enforcer" Height="343.6" Width="449.8">
 
     <Grid x:Name="tex">
-        <Label x:Name="label" Content="Choose topologies" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontFamily="Default"/>
-        <Grid Height="71" Margin="10,115,10.4,0" VerticalAlignment="Top">
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Import" Click="MenuItem_Click"/>
+                    <MenuItem Header="_Export"/>
+                    <MenuItem Header="_Read register"/>
+                    <MenuItem Header="_Close"/>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="_About"/>
+                    <MenuItem Header="_How to"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+        
+        <Label x:Name="label" Content="Choose topologies:" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontFamily="Default" Margin="19,42,198.2,0" Width="226"/>
+        <Grid Height="71" Margin="10,174,10.4,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="124*"/>
                 <ColumnDefinition Width="125*"/>
             </Grid.ColumnDefinitions>
             <Label x:Name="label1_Copy" Content="Not allowed topologies:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Width="171" Height="26"/>
-            <ComboBox x:Name="cb_notallowed" ItemsSource="{Binding cb_data}" Loaded="cb_notallowed_Loaded" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="cb_notallowed_SelectionChanged">
+            <ComboBox x:Name="cb_notallowed" ItemsSource="{Binding cb_data_notallowed}" Loaded="cb_notallowed_Loaded" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="cb_notallowed_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding name}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button x:Name="button1" Content="Customize" HorizontalAlignment="Left" Margin="200,32,0,0" VerticalAlignment="Top" Width="75" Height="19" Grid.ColumnSpan="2"/>
+            <Button x:Name="btn_cust_notallow" Content="Customize" HorizontalAlignment="Left" Margin="173,32,0,0" VerticalAlignment="Top" Width="75" Height="19" Click="btn_cust_notallow_Click" Grid.ColumnSpan="2"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="71" Margin="10,35,0,0" VerticalAlignment="Top" Width="498">
+        <Grid HorizontalAlignment="Left" Height="71" Margin="10,94,0,0" VerticalAlignment="Top" Width="498">
             <Label x:Name="label1_Copy1" Content="Enforced topologies:" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="171"/>
-            <ComboBox x:Name="cb_enforced" ItemsSource="{Binding cb_data}" Loaded="cb_enforced_Loaded" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_enforced_SelectionChanged">
+            <ComboBox x:Name="cb_enforced" ItemsSource="{Binding cb_data_enf}" Loaded="cb_enforced_Loaded" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_enforced_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding name}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button x:Name="button2" Content="Customize" HorizontalAlignment="Left" Margin="200,32,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="btn_cust_enf" Content="Customize" HorizontalAlignment="Left" Margin="171,32,0,0" VerticalAlignment="Top" Width="75" Click="btn_cust_enf_Click"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="47" Margin="10,269,0,0" VerticalAlignment="Top" Width="498">
-            <Button x:Name="btn_apply" Content="Apply" HorizontalAlignment="Left" Margin="315,16,0,0" VerticalAlignment="Top" Width="75" Click="btn_apply_Click"/>
-            <Button x:Name="btn_cancel" Content="Cancel" HorizontalAlignment="Left" Margin="413,16,0,0" VerticalAlignment="Top" Width="75" Click="btn_cancel_Click"/>
+            <Button x:Name="btn_apply" Content="Apply" HorizontalAlignment="Left" Margin="197,10,0,0" VerticalAlignment="Top" Width="75" Click="btn_apply_Click"/>
+            <Button x:Name="btn_cancel" Content="Read register" HorizontalAlignment="Left" Margin="312,10,0,0" VerticalAlignment="Top" Width="75" Click="btn_cancel_Click"/>
         </Grid>
+        
     </Grid>
 </Window>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PasswordEnforcer.model
 {
-    class Topology
+    public class Topology
     {
         public String name { get; set; }
         public String regex { get; set; }

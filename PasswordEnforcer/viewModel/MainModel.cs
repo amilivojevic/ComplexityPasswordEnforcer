@@ -17,5 +17,11 @@ namespace PasswordEnforcer.viewModel
             cb_data.Add(new Topology("None", "none", false, false, 0));
             util.Util.makeListOfTopologies(cb_data);
         }
+
+        public void addTop(Topology newTop)
+        {
+            cb_data.Add(new Topology(newTop.name, newTop.regex, newTop.default_topology, newTop.common_topology, newTop.length));
+            
+        }
     }
 }

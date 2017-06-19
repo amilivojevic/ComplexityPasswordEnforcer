@@ -28,13 +28,38 @@ namespace PasswordEnforcer.util
             }
         }
 
-        public static void makeListOfTopologies(List<Topology> topologyItems)
+        public static bool makeListOfTopologies(List<Topology> topologyItems)
         {
+            
             List<Topology> items = loadJson(path);
-
-            foreach (Topology t in items)
+            if(items != null) { 
+                foreach (Topology t in items)
+                {
+                    topologyItems.Add(t);
+                }
+                return true;
+            }
+            else
             {
-                topologyItems.Add(t);
+                return false;
+            }
+        }
+
+        public static bool makeListOfTopologies(List<Topology> topologyItems, String file_path)
+        {
+
+            List<Topology> items = loadJson(file_path);
+            if (items != null)
+            {
+                foreach (Topology t in items)
+                {
+                    topologyItems.Add(t);
+                }
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -50,18 +75,30 @@ namespace PasswordEnforcer.util
             return topologyNames;
         }
 
-        public static void writeRegistryKey()
+        public static void writeRegistryKey(String keyValue)
         {
            
             RegistryKey key = Registry.LocalMachine.OpenSubKey("Software", true);
 
-            key.CreateSubKey(REGKEY1);
+            //probaj da otvoris DevX
             key = key.OpenSubKey(REGKEY1, true);
+            //ako ne postoji
+            if(key == null)
+            {
+                key.CreateSubKey(REGKEY1);
+                key = key.OpenSubKey(REGKEY1, true);
+            }
 
-            key.CreateSubKey(REGKEY2);
+            //probaj da otvoris PasswordFilter
             key = key.OpenSubKey(REGKEY2, true);
+            if(key == null)
+            {
+                key.CreateSubKey(REGKEY2);
+                key = key.OpenSubKey(REGKEY2, true);
+            }
 
-            key.SetValue(REGKEY3, "sandra kraljica");
+            //postavi vrednost u RegEx
+            key.SetValue(REGKEY3, keyValue);
             key.Close();
 
         }
@@ -83,6 +120,11 @@ namespace PasswordEnforcer.util
         {
             //Uzima u obzir samo not allowed!!!
             return "^((?!" + notAllowedTopology + ").){2}$";
+        }
+
+        public static String fixPath(String old_path)
+        {
+            return old_path.Replace("\\","\\\\");
         }
     }
 }
