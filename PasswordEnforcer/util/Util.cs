@@ -18,15 +18,43 @@ namespace PasswordEnforcer.util
         public static String REGKEY2 = "PasswordFilter";
         public static String REGKEY3 = "RegEx";
 
-        private static ObservableCollection<Topology> loadJson(String path)
+        public static ObservableCollection<Topology> loadJson(String path)
         {
             using (StreamReader r = new StreamReader(path))
             {
                 string json = r.ReadToEnd();
-                //Console.Write("Procitano iz fajla " + path + "\n " + json);
                 ObservableCollection<Topology> items = JsonConvert.DeserializeObject<ObservableCollection<Topology>>(json);
                 return items;
             }
+        }
+
+        public static Topology loadJsonTopology(String path)
+        {
+            using (StreamReader r = new StreamReader(path))
+            {
+                string json = r.ReadToEnd();
+                Topology item = JsonConvert.DeserializeObject<Topology>(json);
+                return item;
+            }
+        }
+
+        public static String previewJson(ObservableCollection<Topology> list)
+        {
+            return JsonConvert.SerializeObject(list.ToArray(), Formatting.Indented);
+        }
+
+        public static String previewJson(Topology top)
+        {
+            return JsonConvert.SerializeObject(top, Formatting.Indented);
+        }
+
+
+        public static void writeJsonFile(ObservableCollection<Topology> list, string path)
+        {
+            string json = JsonConvert.SerializeObject(list.ToArray());
+
+            //upis u json fajl
+            System.IO.File.WriteAllText(path, json);
         }
 
         public static bool makeListOfTopologies(ObservableCollection<Topology> topologyItems)
@@ -106,23 +134,31 @@ namespace PasswordEnforcer.util
 
         }
 
-        public static void readRegistryKey()
+        public static String readRegistryKey()
         {
            
-            Console.WriteLine("Pocetak");
             RegistryKey key = Registry.LocalMachine.OpenSubKey("Software", true);
             key = key.OpenSubKey("DevX");
             key = key.OpenSubKey("PasswordFilter");
             String data = key.GetValue("RegEx").ToString();
-            Console.WriteLine("Procitano: " + data);
+
+            Console.WriteLine("Registar: " + data);
             key.Close();
+
+            return data;
 
         }
 
-        public static String makeRegEx(String enfTopology, String notAllowedTopology)
+        public static String makeRegExNotAllowed(String notAllowedTopology, int length)
         {
             //Uzima u obzir samo not allowed!!!
-            return "^((?!" + notAllowedTopology + ").){2}$";
+            return "^((?!" + notAllowedTopology + ").){" + length + "}$";
+        }
+
+        public static String makeRegExEnforced(String enforcedTopology)
+        {
+            //Uzima u obzir samo enforced!!!
+            return "^(" + enforcedTopology + ")$";
         }
 
         public static String fixPath(String old_path)

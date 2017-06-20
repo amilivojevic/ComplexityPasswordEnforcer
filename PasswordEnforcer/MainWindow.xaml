@@ -12,10 +12,17 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_Import" Click="MenuItem_Click"/>
-                    <MenuItem Header="_Export"/>
-                    <MenuItem Header="_Read register"/>
-                    <MenuItem Header="_Close"/>
+                    <MenuItem  x:Name="mi_import" Header="_Import" Click="MenuItem_Click"/>
+                    <MenuItem  x:Name="mi_export" Header="_Export" Click="mi_export_Click">
+                        <MenuItem  x:Name="mi_preview" Header="_Preview_json" Click="mi_preview_Click"/>
+                        <MenuItem  x:Name="mi_save_as" Header="_Save_as"/>
+                    </MenuItem>
+                    <MenuItem x:Name="mi_readreg" Header="_Read register" Click="mi_readreg_Click"/>
+                    <MenuItem x:Name="mi_close" Header="_Close"/>
+                </MenuItem>
+                <MenuItem Header="_Topology">
+                    <MenuItem x:Name="mi_top_import" Header="_Import" Click="mi_top_import_Click"/>
+                    <MenuItem x:Name="mi_top_export" Header="_Export" Click="mi_top_export_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Help">
                     <MenuItem Header="_About"/>
