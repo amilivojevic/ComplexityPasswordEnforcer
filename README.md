@@ -25,33 +25,24 @@ Važne opcije za podešavanje su: minimalna dužina lozinke i omogućavanje komp
 
 ### Password must meet complexity
 
-A step by step series of examples that tell you have to get a development env running
+Ako se omogu'i ovo pravilo (izabrano Enabled), od korisnika se zahteva da lozinka:
+- ne sadrži korisničko ime ili deo punog imena korisnika
+- bude dugačka bar 6 karaktera
+- sadrži bar 3 od 4 pomenute kategorije karaktera
 
-Say what the step will be
+## PasswordFilterRegEx
+
+PasswordFilterRegEx je prvi deo projekta koji sadrži dll (Dynamic-link library) PasswordFilterRegEx.dll, koncept sistemske deljene biblioteke čiji je cilj da eksportovanjem i implementacijom tri funkcije napravi novi filter koji će novi i menjane lozinke kasnije koristiti.
 
 ```
-Give the example
+BOOLEAN __stdcall InitializeChangeNotify(void);	// (1) BOOLEAN __stdcall PasswordFilter( // (2) PUNICODE_STRING AccountName, PUNICODE_STRING FullName, PUNICODE_STRING Password, BOOLEAN SetOperation ); NTSTATUS __stdcall PasswordChangeNotify(	// (3) PUNICODE_STRING UserName, ULONG RelativeId, PUNICODE_STRING NewPassword ); - See more at: http://www.devx.com/security/Article/21522/0/page/2#sthash.egzWmO3q.dpuf
 ```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
 
 ### Break down into end to end tests
 
 Explain what these tests test and why
 
-```
-Give an example
-```
+
 
 ### And coding style tests
 
