@@ -59,20 +59,25 @@ NTSTATUS __stdcall PasswordChangeNotify(
 Instalacija filtera:
 1. kopirati fajl PasswordFilterRegEx.dll (nalazi se na putanji ComplexityPasswordEnforcer/10489/x64/Release/) u folder %SystemRoot%\system32
 2. Otvoriti Registry Editor (regedit.exe) i na putanji HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa dodati u registar sa imenom NotificationPackages PasswordFilterRegEx (slika)
-3. U Registry Editor (regedit.exe) na putanji HKEY_LOCAL_MACHINE\Software\DevX\PasswordFilter dodati ključ RegEx i u njega upisati željeni regularni izraz prema kom ć
+3. U Registry Editor (regedit.exe) na putanji HKEY_LOCAL_MACHINE\Software\DevX\PasswordFilter dodati ključ RegEx i u njega upisati željeni regularni izraz prema kom će lozinka biti filtrirana.  
+
+Restartovati računar!
 
 
 <img src="https://user-images.githubusercontent.com/17849956/27342415-6a416b9c-55e0-11e7-8590-282276069ed9.png" width="362" height="300" /> 
 
+# asd
+Drugi deo projekta je GUI aplikacija pomoću koje Administrator odabira željeni regularni izraz koji lozinka mora ili ne sme zadovoljiti.
+NAPOMENA: Potrebno je pokrenuti aplikaciju kao Administrator.
+
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* Visual Studio 2015
+* libs: boost, Newtonsoft.Json.10.0.3
 
  
 
-## Authors
+## Autor
 
 * **Aleksandra Milivojevic sw66-2014** 
 
