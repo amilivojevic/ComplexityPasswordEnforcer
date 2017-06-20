@@ -25,14 +25,16 @@ Važne opcije za podešavanje su: minimalna dužina lozinke i omogućavanje komp
 
 ### Password must meet complexity
 
-Ako se omogu'i ovo pravilo (izabrano Enabled), od korisnika se zahteva da lozinka:
+Ako se omogući ovo pravilo (izabrano Enabled), od korisnika se zahteva da lozinka:
 - ne sadrži korisničko ime ili deo punog imena korisnika
 - bude dugačka bar 6 karaktera
 - sadrži bar 3 od 4 pomenute kategorije karaktera
 
 ## PasswordFilterRegEx
 
-PasswordFilterRegEx je prvi deo projekta koji sadrži dll (Dynamic-link library) PasswordFilterRegEx.dll, koncept sistemske deljene biblioteke čiji je cilj da eksportovanjem i implementacijom tri funkcije napravi novi filter koji će novi i menjane lozinke kasnije koristiti.
+PasswordFilterRegEx je prvi deo projekta koji sadrži dll (Dynamic-link library) PasswordFilterRegEx.dll, koncept sistemske deljene biblioteke čiji je cilj da eksportovanjem i implementacijom tri funkcije napravi novi filter koji će novi i menjane lozinke kasnije koristiti.  
+Prilikom pokretanja sistema LSA (eng. Local Security Authority) učitava sve filtere i poziva <code>InitializeChangeNotify</code> funkciju. Kada LSA dobije TRUE kao povratnu vrednost, filter je usešno učitan i LSA počinje da pravi lanac dostupnih filtera.  
+LSA poziva funkciju <code> PasswordFilter</code> za svaki filter u lancu, i ukoliko neki od filtera vrati FALSE vrednost, ne nastavlja se sa pozivanjem ove funkcije za sledeći filter. U tom slučaju, korisnik treba da postavi novu lozinku. Ako svaki filter vrati TRUE vrednost, to znači da je lozinka prošla kroz sve filtere i svaki od njih je o ovome obavešten preko  <code>PasswordChangeNotify</code> funkcije.  
 
 ```
 BOOLEAN __stdcall InitializeChangeNotify(void);	 
