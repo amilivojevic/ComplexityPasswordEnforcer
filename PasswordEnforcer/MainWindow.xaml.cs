@@ -34,8 +34,8 @@ namespace PasswordEnforcer
 
         public void importDataForCombos(String file_path)
         {
-            cb_data.Clear();
-            cb_data.Add(new Topology("None", "none", false, false, 0));
+            
+            //cb_data.Clear();
             if (util.Util.makeListOfTopologies(cb_data, file_path) == false)
             {
                 MessageBox.Show("Impossible to import default topologies!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -113,9 +113,10 @@ namespace PasswordEnforcer
                 String path = util.Util.fixPath(openFileDialog.FileName);
                 Console.WriteLine("selektovan fajl (nadam se da je putanja??): \n" + 
                     util.Util.fixPath(path));
+                cb_data.Clear();
                 importDataForCombos(path);
 
-                foreach(Topology t in cb_data)
+                foreach (Topology t in cb_data)
                 {
                     Console.WriteLine("*  " + t.toString());
                 }
