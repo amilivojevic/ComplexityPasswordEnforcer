@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using PasswordEnforcer.model;
-using PasswordEnforcer.viewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
