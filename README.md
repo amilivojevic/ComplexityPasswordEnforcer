@@ -35,7 +35,18 @@ Ako se omogu'i ovo pravilo (izabrano Enabled), od korisnika se zahteva da lozink
 PasswordFilterRegEx je prvi deo projekta koji sadrži dll (Dynamic-link library) PasswordFilterRegEx.dll, koncept sistemske deljene biblioteke čiji je cilj da eksportovanjem i implementacijom tri funkcije napravi novi filter koji će novi i menjane lozinke kasnije koristiti.
 
 ```
-BOOLEAN __stdcall InitializeChangeNotify(void);	// (1) BOOLEAN __stdcall PasswordFilter( // (2) PUNICODE_STRING AccountName, PUNICODE_STRING FullName, PUNICODE_STRING Password, BOOLEAN SetOperation ); NTSTATUS __stdcall PasswordChangeNotify(	// (3) PUNICODE_STRING UserName, ULONG RelativeId, PUNICODE_STRING NewPassword ); - See more at: http://www.devx.com/security/Article/21522/0/page/2#sthash.egzWmO3q.dpuf
+BOOLEAN __stdcall InitializeChangeNotify(void);	 
+BOOLEAN __stdcall PasswordFilter(  
+  PUNICODE_STRING AccountName,  
+  PUNICODE_STRING FullName,  
+  PUNICODE_STRING Password,  
+  BOOLEAN SetOperation  
+  );   
+NTSTATUS __stdcall PasswordChangeNotify(  
+  PUNICODE_STRING UserName,  
+  ULONG RelativeId,  
+  PUNICODE_STRING NewPassword  
+  ); 
 ```
 
 ### Break down into end to end tests
