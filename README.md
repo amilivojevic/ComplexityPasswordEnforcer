@@ -58,8 +58,11 @@ NTSTATUS __stdcall PasswordChangeNotify(
 
 Instalacija filtera:
 1. kopirati fajl PasswordFilterRegEx.dll (nalazi se na putanji ComplexityPasswordEnforcer/10489/x64/Release/) u folder %SystemRoot%\system32
-2. Otvoriti Registry Editor (regedit.exe) i na putanji HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa dodati u registar sa imenom NotificationPackages PasswordFilterRegEx
+2. Otvoriti Registry Editor (regedit.exe) i na putanji HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa dodati u registar sa imenom NotificationPackages PasswordFilterRegEx (slika)
 3. 
+
+
+<img src="https://user-images.githubusercontent.com/17849956/27342415-6a416b9c-55e0-11e7-8590-282276069ed9.png" width="362" height="300" /> 
 
 ## Built With
 
