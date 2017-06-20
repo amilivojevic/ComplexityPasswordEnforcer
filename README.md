@@ -54,7 +54,12 @@ NTSTATUS __stdcall PasswordChangeNotify(
   PUNICODE_STRING NewPassword  
   ); 
 ```
+### Podešavanja za PasswordFilterRegEx
 
+Instalacija filtera:
+1. kopirati fajl PasswordFilterRegEx.dll (nalazi se na putanji ComplexityPasswordEnforcer/10489/x64/Release/) u folder %SystemRoot%\system32
+2. Otvoriti Registry Editor (regedit.exe) i na putanji HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa dodati u registar sa imenom NotificationPackages PasswordFilterRegEx
+3. 
 
 ## Built With
 
