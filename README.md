@@ -66,8 +66,8 @@ Restartovati računar!
 
 <img src="https://user-images.githubusercontent.com/17849956/27342415-6a416b9c-55e0-11e7-8590-282276069ed9.png" width="362" height="300" /> 
 
-# asd
-Drugi deo projekta je GUI aplikacija pomoću koje Administrator odabira željeni regularni izraz koji lozinka mora ili ne sme zadovoljiti.
+# PasswordEnforcer
+Drugi deo projekta je GUI aplikacija pomoću koje Administrator odabira željeni regularni izraz koji lozinka mora ili ne sme zadovoljiti.  
 NAPOMENA: Potrebno je pokrenuti aplikaciju kao Administrator.
 
 ## Built With
