@@ -1,6 +1,7 @@
 ﻿using PasswordEnforcer.model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace PasswordEnforcer
     /// </summary>
     public partial class CustomizeNotAllowedTopology : Window
     {
-        public CustomizeNotAllowedTopology()
+        public CustomizeNotAllowedTopology(ObservableCollection<Topology> cb_data)
         {
             InitializeComponent();
         }
@@ -39,8 +40,9 @@ namespace PasswordEnforcer
                     tb_length.Text = "";
                 } else
                 {
+                    /*
                     Topology t = new Topology(tb_name.Text, tb_regex.Text, false, false, 0);
-                    
+                    Console.WriteLine("Size: pre " + MainWindow.cb_data_notallowed.Count);
                     MainWindow.cb_data_notallowed.Add(
                         new Topology(
                             t.name,
@@ -49,7 +51,9 @@ namespace PasswordEnforcer
                             t.common_topology,
                             t.length
                         ));
+                    Console.WriteLine("Size: posle" + MainWindow.cb_data_notallowed.Count);
                     this.Close();
+                    */
                 }
             }
             else

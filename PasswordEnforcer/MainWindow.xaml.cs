@@ -3,6 +3,7 @@ using PasswordEnforcer.model;
 using PasswordEnforcer.viewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,45 +15,32 @@ namespace PasswordEnforcer
     public partial class MainWindow : Window
     {
 
-        public static List<Topology> cb_data_enf { get; set; }
-        public static List<Topology> cb_data_notallowed { get; set; }
+        public ObservableCollection<Topology> cb_data { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
 
-            cb_data_notallowed = new List<Topology>();
-            cb_data_notallowed.Add(new Topology("None", "none", false, false, 0));
-            if (util.Util.makeListOfTopologies(cb_data_notallowed, util.Util.path) == false)
+            cb_data = new ObservableCollection<Topology>();
+            cb_data.Add(new Topology("None", "none", false, false, 0));
+            if (util.Util.makeListOfTopologies(cb_data, util.Util.path) == false)
             {
                 MessageBox.Show("Impossible to import default topologies!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
-            cb_data_enf = new List<Topology>();
-            cb_data_enf.Add(new Topology("None", "none", false, false, 0));
-            if (util.Util.makeListOfTopologies(cb_data_enf, util.Util.path) == false)
-            {
-                MessageBox.Show("Impossible to import default topologies!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
 
         }
 
         public void importDataForCombos(String file_path)
         {
-            cb_data_notallowed = new List<Topology>();
-            cb_data_notallowed.Add(new Topology("None", "none", false, false, 0));
-            if (util.Util.makeListOfTopologies(cb_data_notallowed, file_path) == false)
+            cb_data = new ObservableCollection<Topology>();
+            cb_data.Add(new Topology("None", "none", false, false, 0));
+            if (util.Util.makeListOfTopologies(cb_data, file_path) == false)
             {
                 MessageBox.Show("Impossible to import default topologies!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
-            cb_data_enf = new List<Topology>();
-            cb_data_enf.Add(new Topology("None", "none", false, false, 0));
-            if (util.Util.makeListOfTopologies(cb_data_enf, file_path) == false)
-            {
-                MessageBox.Show("Impossible to import default topologies!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
         }
        
         private void cb_enforced_Loaded(object sender, RoutedEventArgs e)
@@ -105,15 +93,15 @@ namespace PasswordEnforcer
 
         private void btn_cust_enf_Click(object sender, RoutedEventArgs e)
         {
-
-            CustomizeEnforcedTopology customEnfWindow = new CustomizeEnforcedTopology();
+            Console.WriteLine("MAIN: Size: pre " + cb_data.Count);
+            CustomizeEnforcedTopology customEnfWindow = new CustomizeEnforcedTopology(cb_data);
             customEnfWindow.ShowDialog();
 
         }
 
         private void btn_cust_notallow_Click(object sender, RoutedEventArgs e)
         {
-            CustomizeNotAllowedTopology customNotallowedWindow = new CustomizeNotAllowedTopology();
+            CustomizeNotAllowedTopology customNotallowedWindow = new CustomizeNotAllowedTopology(cb_data);
             customNotallowedWindow.ShowDialog();
         }
 

@@ -32,7 +32,7 @@
                 <ColumnDefinition Width="125*"/>
             </Grid.ColumnDefinitions>
             <Label x:Name="label1_Copy" Content="Not allowed topologies:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Width="171" Height="26"/>
-            <ComboBox x:Name="cb_notallowed" ItemsSource="{Binding cb_data_notallowed}" Loaded="cb_notallowed_Loaded" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="cb_notallowed_SelectionChanged">
+            <ComboBox x:Name="cb_notallowed" ItemsSource="{Binding cb_data}" Loaded="cb_notallowed_Loaded" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="cb_notallowed_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding name}"/>
@@ -43,7 +43,7 @@
         </Grid>
         <Grid HorizontalAlignment="Left" Height="71" Margin="10,94,0,0" VerticalAlignment="Top" Width="498">
             <Label x:Name="label1_Copy1" Content="Enforced topologies:" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="171"/>
-            <ComboBox x:Name="cb_enforced" ItemsSource="{Binding cb_data_enf}" Loaded="cb_enforced_Loaded" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_enforced_SelectionChanged">
+            <ComboBox x:Name="cb_enforced" ItemsSource="{Binding cb_data,Mode=TwoWay}" Loaded="cb_enforced_Loaded" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_enforced_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding name}"/>

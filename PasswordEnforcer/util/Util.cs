@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using PasswordEnforcer.model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,21 +18,21 @@ namespace PasswordEnforcer.util
         public static String REGKEY2 = "PasswordFilter";
         public static String REGKEY3 = "RegEx";
 
-        private static List<Topology> loadJson(String path)
+        private static ObservableCollection<Topology> loadJson(String path)
         {
             using (StreamReader r = new StreamReader(path))
             {
                 string json = r.ReadToEnd();
                 //Console.Write("Procitano iz fajla " + path + "\n " + json);
-                List<Topology> items = JsonConvert.DeserializeObject<List<Topology>>(json);
+                ObservableCollection<Topology> items = JsonConvert.DeserializeObject<ObservableCollection<Topology>>(json);
                 return items;
             }
         }
 
-        public static bool makeListOfTopologies(List<Topology> topologyItems)
+        public static bool makeListOfTopologies(ObservableCollection<Topology> topologyItems)
         {
-            
-            List<Topology> items = loadJson(path);
+
+            ObservableCollection<Topology> items = loadJson(path);
             if(items != null) { 
                 foreach (Topology t in items)
                 {
@@ -45,10 +46,12 @@ namespace PasswordEnforcer.util
             }
         }
 
-        public static bool makeListOfTopologies(List<Topology> topologyItems, String file_path)
+
+
+        public static bool makeListOfTopologies(ObservableCollection<Topology> topologyItems, String file_path)
         {
 
-            List<Topology> items = loadJson(file_path);
+            ObservableCollection<Topology> items = loadJson(file_path);
             if (items != null)
             {
                 foreach (Topology t in items)
@@ -63,9 +66,9 @@ namespace PasswordEnforcer.util
             }
         }
 
-        public static List<String> makeListOfTopologyNames(List<String> topologyNames)
+        public static ObservableCollection<String> makeListOfTopologyNames(ObservableCollection<String> topologyNames)
         {
-            List<Topology> items = loadJson(path);
+            ObservableCollection<Topology> items = loadJson(path);
             //List<String> topologyNames = new List<String>();
             
             foreach(Topology t in items)
