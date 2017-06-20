@@ -34,7 +34,7 @@ namespace PasswordEnforcer
 
         public void importDataForCombos(String file_path)
         {
-            cb_data = new ObservableCollection<Topology>();
+            cb_data.Clear();
             cb_data.Add(new Topology("None", "none", false, false, 0));
             if (util.Util.makeListOfTopologies(cb_data, file_path) == false)
             {
@@ -93,7 +93,7 @@ namespace PasswordEnforcer
 
         private void btn_cust_enf_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("MAIN: Size: pre " + cb_data.Count);
+            //Console.WriteLine("MAIN: Size: pre " + cb_data.Count);
             CustomizeEnforcedTopology customEnfWindow = new CustomizeEnforcedTopology(cb_data);
             customEnfWindow.ShowDialog();
 
@@ -113,6 +113,12 @@ namespace PasswordEnforcer
                 String path = util.Util.fixPath(openFileDialog.FileName);
                 Console.WriteLine("selektovan fajl (nadam se da je putanja??): \n" + 
                     util.Util.fixPath(path));
+                importDataForCombos(path);
+
+                foreach(Topology t in cb_data)
+                {
+                    Console.WriteLine("*  " + t.toString());
+                }
             }
         }
     }

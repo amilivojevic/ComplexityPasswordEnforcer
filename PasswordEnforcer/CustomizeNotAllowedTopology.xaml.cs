@@ -21,9 +21,13 @@ namespace PasswordEnforcer
     /// </summary>
     public partial class CustomizeNotAllowedTopology : Window
     {
+
+        public ObservableCollection<Topology> list_data { get; set; }
+
         public CustomizeNotAllowedTopology(ObservableCollection<Topology> cb_data)
         {
             InitializeComponent();
+            list_data = cb_data;
         }
 
         private void btn_create_Click(object sender, RoutedEventArgs e)
@@ -40,10 +44,10 @@ namespace PasswordEnforcer
                     tb_length.Text = "";
                 } else
                 {
-                    /*
+                    
                     Topology t = new Topology(tb_name.Text, tb_regex.Text, false, false, 0);
-                    Console.WriteLine("Size: pre " + MainWindow.cb_data_notallowed.Count);
-                    MainWindow.cb_data_notallowed.Add(
+                    Console.WriteLine("Size: pre " + list_data.Count);
+                    list_data.Add(
                         new Topology(
                             t.name,
                             t.regex,
@@ -51,9 +55,9 @@ namespace PasswordEnforcer
                             t.common_topology,
                             t.length
                         ));
-                    Console.WriteLine("Size: posle" + MainWindow.cb_data_notallowed.Count);
+                    Console.WriteLine("Size: posle" + list_data.Count);
                     this.Close();
-                    */
+                    
                 }
             }
             else
