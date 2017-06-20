@@ -36,12 +36,16 @@ PasswordFilterRegEx je prvi deo projekta koji sadrži dll (Dynamic-link library)
 
 ```
 BOOLEAN __stdcall InitializeChangeNotify(void);	 
+```
+```
 BOOLEAN __stdcall PasswordFilter(  
   PUNICODE_STRING AccountName,  
   PUNICODE_STRING FullName,  
   PUNICODE_STRING Password,  
   BOOLEAN SetOperation  
   );   
+  ```
+  ```
 NTSTATUS __stdcall PasswordChangeNotify(  
   PUNICODE_STRING UserName,  
   ULONG RelativeId,  
