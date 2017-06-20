@@ -19,9 +19,11 @@ Iz ovih razloga, potrebno je dodatno onemogućiti korisnicima da odaberu lozinke
 
 Sistem administratori su zaduženi za konfigurisanje politike bezbednosti na Windows OS. Međutim, svi korisnici mogu da podese neke osnovne politike za kreiranje ili ažuriranje lozinke za prijavljivanje na sistem.  
 Control Panel -> Administrative tools -> Security settings -> Account policies -> Password policy  
+Važne opcije za podešavanje su: minimalna dužina lozinke i omogućavanje kompleksnih zahteva.  
+<img src="https://user-images.githubusercontent.com/17849956/27335697-ba969418-55cd-11e7-96c8-56012476ca31.png" width="563" height="400" />  
 
 
-### Installing
+### Password must meet complexity
 
 A step by step series of examples that tell you have to get a development env running
 
